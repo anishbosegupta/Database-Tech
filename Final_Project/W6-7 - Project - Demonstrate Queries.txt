@@ -1,0 +1,435 @@
+---Part 1
+
+-- ------------------------
+-- Populate Incident table
+-- ------------------------
+
+INSERT INTO Incident(Incident_ID, Seizure_Date, Estimated_Start_Date, Estimated_End_Date, Incident_Type_ID, Incident_Name, Incident_Description, Transit_Method_ID, Vehicle_Type_ID, Carrier, Concealment_Method, Confidential_Comments_ID, Confidential_Info_Internal_Comments, Arrests_Made, Harvard_Style_Reference, Number_of_Arrests, Key_Word, Forest_Crime_ID, Agency_Contributor, Last_Updated, Entered_Date, Entered_By, Google_Translate)
+
+VALUES(1001,"2021-04-11","2021-03-28","2021-04-11",2,"Outapi,1 pangolin skin seized, 2 arrested, 11 April 2021","It was reported on 14 April 2021, that the police caught two suspects named Mr. Veikko Angula who is a Namibian citizen and Mr. Murangi Kambwale who is a Angolan citizen and seized 1 pangolin skin.",9,NULL,NULL,NULL,3,NULL,1,"Koerant, R.-J.L., Jou Taal, Jou and Steynberg, F. (2021). Vierde ‘renosterstroper’ van Gobabis vas. [online] Republikein. Available at: https://www.republikein.com.na/nuus/vierde-renosterstroper-van-gobabis-vas2021-04-14 [Accessed 14 Jul. 2022].",2,NULL,NULL,"TRAFFIC",curdate(),curdate(),"agupta",1),
+
+(1002,"2021-04-02","2021-03-19","2021-04-02",1,"Gobabis District, 1 white rhino poached,  one ivory smuggled,  3 arrested, 02 April 2021","It was reported on 12 April 2021, that 6 suspects were arrested for poaching a rhino and another one for smuggling ivory. Out of the six individuals, three of them were accused of poaching a white rhino cow in the Gobabis District. The three identified suspects are Messrs. Zondundi Tjipuiko, Frederik Hamukoto, and Tjimbaka Mbatiminua. They were all arrested when farmers, the K9 anti-poaching unit and trackers found some tracks leading to an establishment in Gobabis and they used a vehicle to escape. The authorities of Gobabis  obtained shotgun and 22 cartridges from the three individuals. However, the police are still looking for suspects with the rhino horns.",9,NULL,NULL,NULL,3,NULL,1,"Koerant, R.-J.L., Jou Taal, Jou and Steynberg, F. (2021). Vierde ‘renosterstroper’ van Gobabis vas. [online] Republikein. Available at: https://www.republikein.com.na/nuus/vierde-renosterstroper-van-gobabis-vas2021-04-14 [Accessed 14 Jul. 2022].",3,NULL,NULL,"TRAFFIC",curdate(),curdate(),"agupta",1),
+
+(1003,"2020-01-01",NULL,NULL,2,"Bomassa, meat of one elephant seized, three convicted, 01 January 2020","On 01 January 2020 at Bomassa, three suspects named Molouka Kennedy, Ekpongo Ngand Denis, and Baeki Faustin were arrested by the echo-guards while they were smoking the meat of an elphant they they killed. All three individuals said that they were helped by another person named Ikanga Fernand, who had killed the elephant. The three suspects were sentenced 24 months of prison time and each of them had to pay 100,000 XAF. They were also ordered tp pay a total of 500,000 XAF for civil damages.",9,NULL,NULL,NULL,3,NULL,1,"Wildlex.org. 2020. The Public Prosecutor's Office and the Sangha Departmental Directorate of Water and Forests vs Molouka Kennedy, Ekpongo Ngand Denis, Baeki Faustin | WILDLEX. [online] Available at: <https://www.wildlex.org/court-decisions/public-prosecutors-office-and-sangha-departmental-directorate-of-water-and-262> [Accessed 6 July 2022].",3,NULL,NULL,"TRAFFIC",curdate(),curdate(),"agupta",0),
+
+(1004,"2021-04-08","2021-03-25","2021-04-08",2,"Tiger skin and bones found in DanYang, two people arrested","In April , the police in DanYang set traps on highways and arrested 2 people on a van, Yang and Wang. They also found a tiger skin and a lot of tiger bones on the van.According to Yang and Wang (the exact full name are unknown), they bought the tiger skin from a Russian with $6500 USD. And they planned to find another buyer in DanYang. The police estimated they could sold the skin for 1300000RMB in the black market. Yang and Wang were charged for illegally selling and transporting rare animal parts.No court report and conviction made yet.",7,1,NULL,NULL,3,NULL,1,"Huang, Y. (2020, June 25). 虎皮拉起来比民警整高出两个头！江苏警方破获非法贩卖虎皮虎骨案. https://baijiahao.baidu.com/s?id=1670431713655790070&amp;wfr=spider&amp;for=pc.",2,NULL,NULL,"TRAFFIC",curdate(),curdate(),"agupta",1),
+
+(1005,"2014-06-17",NULL,NULL,1,"Melghat Reserve, 1 tiger killed, 2 charged,  17 June  2014","It was reported on June 17th, 2014 that two suspects killed a tiger in the Melghat Reserve, Maharashtra, India on 01 June 2013. Two of their accomplices turned them in. During appeal, their bail request was accepted. The total amount of money the 2 applicants had to pay was 25,000 rupees which is an equivalent of 415 US dollars. The Court decided that the two men must communicate to the court and give their addresses and telephone numbers, specifically providing them both the home and cellphone numbers. The court's decision went against what the police had expected. It also went against what the Maharashtra State Forest department and NGOs for the protection of local fauna had expected.",9,NULL,NULL,NULL,3,NULL,1,"des Bois, R., 2014. Robin des Bois On the Trail Information and analysis bulletin on animal poaching and smuggling No.5 pg65. [online] Robindesbois.org. Available at: <https://robindesbois.org/wp-content/uploads/2015/11/ON_THE_TRAIL_5.pdf> [Accessed 10 June 2022].",2,"Melaghat Reserve",NULL,"TRAFFIC",curdate(),curdate(),"agupta",0);
+
+-- ------------------------
+-- Populate Location table
+-- ------------------------
+
+INSERT INTO Location(Incident_ID, Town_City, Port_ID, Village, Country_ID, Latitude, Longitude, Last_Updated, Entered_Date, Entered_By)
+VALUES(1001,"Outapi",NULL,NULL,"NAM",-23.90,29.47,curdate(),curdate(),"agupta"),
+(1002,"Gobabis District",NULL,NULL,"NAM",39.59,-0.46,curdate(),curdate(),"agupta"),
+(1003,"Bomassa",NULL,NULL,"COG",61.18,7.23,curdate(),curdate(),"agupta"),
+(1004,"DanYang",NULL,NULL,"CHN",32.21,119.46,curdate(),curdate(),"agupta"),
+(1005,"Amravati",NULL,NULL,"IND",1.62,18.06,curdate(),curdate(),"agupta");
+
+-- ------------------------
+-- Populate Species_Detail table
+-- ------------------------
+
+INSERT INTO Species_Detail(Incident_ID, Species_ID, Species_Item_ID, Additional_Description, Quantity, Weight_in_kg, Estimated_Weight_in_Kg,Suspected_Captive_Source,Notes_Unknown_Quantities, Other_Species_Seized, Last_Updated, Entered_Date, Entered_By)
+VALUES(1001,1,14,NULL,1,NULL,NULL,0,NULL,NULL,curdate(),curdate(),"agupta"),(1002,3,13,NULL,NULL,NULL,NULL,0,NULL,NULL,curdate(),curdate(),"agupta"),(1003,4,7,NULL,1,NULL,NULL,0,NULL,NULL,curdate(),curdate(),"agupta"),
+(1004,6,1,NULL,NULL,NULL,NULL,1,"Unknown quantity, also brought from a Russian",NULL,curdate(),curdate(),"agupta"),(1004,6,14,NULL,1,NULL,NULL,1,"brought from a Russian",NULL,curdate(),curdate(),"agupta"),
+(1005,6,13,NULL,NULL,NULL,NULL,0,NULL,NULL,curdate(),curdate(),"agupta");
+
+-- --------------------------
+-- Populate Trade_Route table
+-- --------------------------
+
+INSERT INTO Trade_Route(Trade_Route_ID, Incident_ID, Trade_Route_Type_ID, Country_ID, Port_ID, Location, Transit_Method_ID, Comments, Travel_Date, Last_Updated, Entered_Date, Entered_By)
+VALUES(1,1004,1,"RUS",NULL,NULL,NULL,"Transit type from Russian to Yang and Wang was unknown, deal date was unknown",NULL,curdate(),curdate(),"agupta"),
+(2,1004,3,"CHN",NULL,"DanYang",7,NULL,NULL,curdate(),curdate(),"agupta");
+
+-- --------------------------
+-- Populate Perpetrator table
+-- --------------------------
+
+INSERT INTO Perpetrator(Perpetrator_ID, Incident_ID, Full_Name, Country_ID, Submitted_to_Media_Monitoring_Program, Arrested, Arrested_Date, Conviction, Convicted_Date, Convicted_Outcome_Details, Number_of_Years_of_Imprisonment, Fine_Amount, Fine_Currency_ID, Last_Updated, Entered_Date, Entered_By)
+VALUES(1,1001,"Veikko Angula","NAM",1,1,NULL,0,NULL,"Confiscation & arrest",NULL,NULL,NULL,curdate(),curdate(),"agupta"),(2,1002,"Messrs. Zondundi Tjipuiko",NULL,1,1,NULL,0,NULL,"Arrest",NULL,NULL,NULL,curdate(),curdate(),"agupta"),(3,1002,"Frederik Hamukoto",NULL,1,1,NULL,0,NULL,"Arrest",NULL,NULL,NULL,curdate(),curdate(),"agupta"),(4,1002,"Tjimbaka Mbatiminua",NULL,1,1,NULL,0,NULL,"Arrest",NULL,NULL,NULL,curdate(),curdate(),"agupta"),
+(5,1003,"Molouka Kennedy",NULL,1,1,"2020-01-01",1,NULL,"Conviction - court fine & imprisonment",2.00,100000.00,3,curdate(),curdate(),"agupta"),
+(6,1004,"Yang","CHN",1,1,NULL,0,NULL,NULL,NULL,NULL,NULL,curdate(),curdate(),"agupta"),
+(7,1005,"Unknown",NULL,0,1,"2013-06-01",1,NULL,"Charged- Bail granted",NULL,25000,2,curdate(),curdate(),"agupta"),(8,1005,"Unknown",NULL,0,1,"2013-06-01",1,NULL,"Charged- Bail granted",NULL,25000,2,curdate(),curdate(),"agupta");
+
+-- --------------------------------
+-- Populate Other_Item_Seized table
+-- --------------------------------
+
+INSERT INTO Other_Item_Seized(Other_Item_Seized_ID, Incident_ID, Seized_Item_ID, Quantity, Weight_in_Kg, Description, Last_Updated, Entered_Date, Entered_By)
+VALUES(1,1002,4,1,NULL,"Shotgun",curdate(),curdate(),"agupta"),(2,1002,1,22,NULL,"22 cartridges",curdate(),curdate(),"agupta");
+
+-- ------------------------------
+-- Populate Refrigerant_Gas table
+-- ------------------------------
+INSERT INTO Refrigerant_Gas(Incident_ID, Gas_Category_ID, Type_of_Gas_ID, Cylinder_Type_ID, Number_of_Cylinders, Reported_Volume_in_Kg, Estimated_Volume_in_Kg, Additional_Description, Notes, Last_Updated, Entered_Date, Entered_By)
+VALUES(1005,2,1,2,5,NULL,10,NULL,NULL,curdate(),curdate(),"agupta");
+
+-- ------------------------
+-- Populate Attachment table
+-- ------------------------
+INSERT INTO Attachment(Attachment_ID, Incident_ID, Attachment, Source_File_Path, Last_Updated, Entered_Date, Entered_By)
+VALUES(1,1001,"https://www.republikein.com.na/nuus/vierde-renosterstroper-van-gobabis-vas2021-04-14?reloaded=true",NULL,curdate(),curdate(),"agupta"),(2,1002,"https://www.republikein.com.na/nuus/ses-vas-vir-renosterstropery2021-04-12",NULL,curdate(),curdate(),"agupta"),(3,1003,"https://www.wildlex.org/court-decisions/public-prosecutors-office-and-sangha-departmental-directorate-of-water-and-262",NULL,curdate(),curdate(),"agupta"),
+(4,1004,"https://baijiahao.baidu.com/s?id=1670431713655790070&amp;wfr=spider&amp;for=pc.",NULL,curdate(),curdate(),"agupta"),
+(5,1005,"https://robindesbois.org/wp-content/uploads/ON_THE_TRAIL_5.pdf",NULL,curdate(),curdate(),"agupta");
+
+-- ----------------------------
+-- Populate Incident_Type table
+-- ----------------------------
+INSERT INTO Incident_Type(Incident_Type_ID, Incident_Type)
+VALUES(1,"Poaching"),(2,"Seizure"),(3,"Seizure Summary"),(4,"Theft"),(5,"Other");
+
+-- ----------------------
+-- Populate Country table
+-- ----------------------
+
+INSERT INTO Country(Country_ID, Country_Name)
+VALUES("IND","India"),("CHN","China"),("ESP","Spain"),("COG","Congo(the)"),("COD","Democratic Republic of Congo"),("VNM","Viet Nam"),("SEN","Senegal"),("ZAF","South Africa"),("SSD","South Sudan"),("TWN","Taiwan (Province of China)"),("KEN","Kenya"),("MWI","Malawi"),("NPL","Nepal"),("NAM", "Namibia"),("RUS","Russian Federation (the)");
+
+-- -----------------------------
+-- Populate Transit_Method table
+-- -----------------------------
+INSERT INTO Transit_Method(Transit_Method_ID, Transit_Method)
+VALUES(1,"Air-cargo"),(2,"Air-passenger"),(3,"Courier"),(4,"Foot"),(5,"Other"),(6,"Post"),(7,"Road"),(8,"Sea"),(9,"Unknown"),(10,"River"),(11,"Rail");
+
+-- ---------------------------
+-- Populate Vehicle_Type table
+-- ---------------------------
+
+INSERT INTO Vehicle_Type(Vehicle_Type_ID, Vehicle_Type)
+VALUES(1,"Car/Van"),(2,"Bicycle"),(3,"Bus"),(4,"Motorbike"),(5,"Tractor"),(6,"Truck/Lorry"),(7,"Other");
+
+-- ------------------------------------
+-- Populate Confidential_Comments table
+-- ------------------------------------
+
+INSERT INTO Confidential_Comments(Confidential_Comments_ID, Confidential_Comments)
+VALUES(1,"Yes - Do not disseminate"),(2,"Yes - Can be mapped/remove confidential column"),(3,"No");
+
+-- ---------------------------
+-- Populate Forest_Crime table
+-- ---------------------------
+
+INSERT INTO Forest_Crime(Forest_Crime_ID, Forest_Crime)
+VALUES(1,"Illegal Logging"),(2,"Forest Clearance"),(3,"Transport"),(4,"Corruption"),(5,"Processing"),(6,"Possession");
+
+-- ----------------------
+-- Populate Species table
+-- ----------------------
+
+INSERT INTO Species(Species_ID, Species)
+VALUES(1,"Pangolin"),(2,"Leopard"),(3,"Rhino"),(4,"Elephant"),(5,"Snow Leopard"),(6,"Tiger"),(7,"Reptile - Other(e.g. lizard,gecko,crocodile)"),(8,"Other feline(e.g. leopard cat,serval,lynx,golden cat,caracal,ocelot,jungle cat,puma,cheetah)");
+
+-- ---------------------------
+-- Populate Species_Item table
+-- ---------------------------
+
+INSERT INTO Species_Item(Species_Item_ID, Species_Item)
+VALUES(1,"Bone"),(2,"Carcass"),(3,"Claw"),(4,"Fin"),(5,"Horn"),(6,"Ivory"),(7,"Meat"),(8,"Paw"),(9,"Scales"),(10,"Other Parts"),(11,"Tail"),(12,"Tooth"),(13,"Whole unknown state"),(14,"Skin");
+
+-- -------------------------------
+-- Populate Trade_Route_Type table
+-- -------------------------------
+
+INSERT INTO Trade_Route_Type(Trade_Route_Type_ID, Trade_Route_Type)
+VALUES(1,"Origin"),(2,"Outbound"),(3,"Transit"),(4,"Destination"),(5,"Exporter"),(6,"Other Seizure Location");
+
+-- -------------------
+-- Populate Port table
+-- -------------------
+
+INSERT INTO Port(Port_ID, Port)
+VALUES(1,"LLW - Lilongwe International Airport"),(2,"JUB - Juba International Airport");
+
+-- ----------------------------
+-- Populate Fine_Currency table
+-- ----------------------------
+
+INSERT INTO Fine_Currency(Fine_Currency_ID, Fine_Currency)
+VALUES(1,"USD"),(2,"INR"),(3,"XAF"),(4,"VND"),(5,"CNY"),(6,"NAD"),(7,"XOF");
+
+-- --------------------------
+-- Populate Seized_Item table
+-- --------------------------
+
+INSERT INTO Seized_Item(Seized_Item_ID, Seized_Item)
+VALUES(1,"Ammunition"),(2,"Cash/Money"),(3,"Computer/Laptop"),(4,"Firearms"),(5,"Jewellery"),(6,"Logging equipment"),(7,"Fishing equipment"),(8,"Poaching equipment"),(9,"Mobile phone"),(10,"Precious metal/stones"),(11,"Vehicle"),(12,"Other"),(13,"Drugs"),(14,"Refrigerator"),(15,"Air-conditioning equipment"),(16,"Refrigerant equipment"),(17,"Empty gas cylinders");
+
+-- ---------------------------
+-- Populate Gas_Category table
+-- ---------------------------
+
+INSERT INTO Gas_Category(Gas_Category_ID, Gas_Category)
+VALUES(1,"HFC"),(2,"CFC"),(3,"HCFC"),(4,"ODS"),(5,"HFO"),(6,"Halons"),(7,"CTC"),(8,"Unknown");
+
+-- --------------------------
+-- Populate Type_of_Gas table
+-- --------------------------
+
+INSERT INTO Type_of_Gas(Type_of_Gas_ID, Type_of_Gas)
+VALUES(1,"CFC-112"),(2,"HCFC-142b"),(3,"HFC-134a"),(4,"HFO-1234yf"),(5,"Halon 2402"),(6,"Unknown");
+
+-- ----------------------------
+-- Populate Cylinder_Type table
+-- ----------------------------
+
+INSERT INTO Cylinder_Type(Cylinder_Type_ID, Cylinder_Type)
+VALUES(1,"Disposable"),(2,"Refillable"),(3,"Unknown");
+
+---Parts 2 and 3
+
+How many incidents exists in the database?
+
+SELECT COUNT(*) FROM Incident;
+
++----------+
+| COUNT(*) |
++----------+
+|        5 |
++----------+
+1 row in set (0.000 sec)
+
+What are the countries where environmental crimes have been committed?
+
+SELECT DISTINCT Country_Name 
+FROM Incident  
+INNER JOIN Location ON Incident.Incident_ID = Location.Incident_ID 
+INNER JOIN Country ON Location.Country_ID = Country.Country_ID 
+ORDER BY Country_Name;
+
++--------------+
+| Country_Name |
++--------------+
+| China        |
+| Congo(the)   |
+| India        |
+| Namibia      |
++--------------+
+4 rows in set (0.001 sec)
+
+Which incidents have and don't have a trade route?
+
+SELECT Incident.Incident_ID, Trade_Route_ID
+FROM Incident
+LEFT JOIN Trade_Route ON Incident.Incident_ID = Trade_Route.Incident_ID;
+
++-------------+----------------+
+| Incident_ID | Trade_Route_ID |
++-------------+----------------+
+|        1002 |           NULL |
+|        1005 |           NULL |
+|        1001 |           NULL |
+|        1003 |           NULL |
+|        1004 |              1 |
+|        1004 |              2 |
++-------------+----------------+
+6 rows in set (0.000 sec)
+
+What environmental crimes have been committed, in which countries have the crimes taken place, have any endangered species been harmed in the process and have the perpetrators of the crimes been arrested and convicted?
+
+SELECT DISTINCT Incident.Incident_ID, Incident_Type, Seizure_Date, Country_Name, Species, Perpetrator_ID, Full_Name, Arrested, Conviction
+FROM Incident,Incident_Type, Location, Country, Species_Detail, Species, Perpetrator
+WHERE Incident.Incident_Type_ID = Incident_Type.Incident_Type_ID
+AND Incident.Incident_ID = Location.Incident_ID
+AND Location.Country_ID = Country.Country_ID
+AND Incident.Incident_ID = Species_Detail.Incident_ID
+AND Species_Detail.Species_ID = Species.Species_ID
+AND Incident.Incident_ID = Perpetrator.Incident_ID;
+
++-------------+---------------+--------------+--------------+----------+----------------+---------------------------+----------+------------+
+| Incident_ID | Incident_Type | Seizure_Date | Country_Name | Species  | Perpetrator_ID | Full_Name                 | Arrested | Conviction |
++-------------+---------------+--------------+--------------+----------+----------------+---------------------------+----------+------------+
+|        1001 | Seizure       | 2021-04-11   | Namibia      | Pangolin |              1 | Veikko Angula             |        1 |          0 |
+|        1002 | Poaching      | 2021-04-02   | Namibia      | Rhino    |              2 | Messrs. Zondundi Tjipuiko |        1 |          0 |
+|        1002 | Poaching      | 2021-04-02   | Namibia      | Rhino    |              3 | Frederik Hamukoto         |        1 |          0 |
+|        1002 | Poaching      | 2021-04-02   | Namibia      | Rhino    |              4 | Tjimbaka Mbatiminua       |        1 |          0 |
+|        1003 | Seizure       | 2020-01-01   | Congo(the)   | Elephant |              5 | Molouka Kennedy           |        1 |          1 |
+|        1004 | Seizure       | 2021-04-08   | China        | Tiger    |              6 | Yang                      |        1 |          0 |
+|        1005 | Poaching      | 2014-06-17   | India        | Tiger    |              7 | Unknown                   |        1 |          1 |
+|        1005 | Poaching      | 2014-06-17   | India        | Tiger    |              8 | Unknown                   |        1 |          1 |
++-------------+---------------+--------------+--------------+----------+----------------+---------------------------+----------+------------+
+8 rows in set (0.001 sec)
+
+How many perpetrators are there per incident?
+
+SELECT Incident.Incident_ID,
+COUNT(Perpetrator.Perpetrator_ID) AS num_Perpetrator
+FROM Incident
+LEFT JOIN Perpetrator ON Incident.Incident_ID = Perpetrator.Incident_ID
+GROUP BY Incident.Incident_ID;
+
++-------------+-----------------+
+| Incident_ID | num_Perpetrator |
++-------------+-----------------+
+|        1001 |               1 |
+|        1002 |               3 |
+|        1003 |               1 |
+|        1004 |               1 |
+|        1005 |               2 |
++-------------+-----------------+
+5 rows in set (0.000 sec)
+
+
+How many perpetrators were convicted?
+
+SELECT SUM(Conviction) AS total_conviction
+FROM Perpetrator;
+
++------------------+
+| total_conviction |
++------------------+
+|                3 |
++------------------+
+1 row in set (0.000 sec)
+
+
+What is the highest incident_ID in the Incident table?
+
+SELECT MAX(Incident_ID) AS Incident_ID_max
+FROM Incident;
+
++-----------------+
+| Incident_ID_max |
++-----------------+
+|            1005 |
++-----------------+
+1 row in set (0.000 sec)
+
+
+How many incidents have more than one perpetrators?
+
+SELECT Incident.Incident_ID,
+COUNT(Perpetrator.Perpetrator_ID) AS num_Perpetrator
+FROM Incident
+LEFT JOIN Perpetrator ON Incident.Incident_ID = Perpetrator.Incident_ID
+GROUP BY Incident.Incident_ID
+HAVING num_Perpetrator > 1;
+
++-------------+-----------------+
+| Incident_ID | num_Perpetrator |
++-------------+-----------------+
+|        1002 |               3 |
+|        1005 |               2 |
++-------------+-----------------+
+2 rows in set (0.000 sec)
+
+
+How do you update a single record in the Species_Detail table?
+
+UPDATE Species_Detail
+SET Quantity = 5
+WHERE Incident_ID = 1005;
+
+Query OK, 1 row affected (0.003 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+
+How do you update a group of records?
+
+UPDATE Other_Item_Seized
+SET Description = "This is another item seized";
+
+Query OK, 2 rows affected (0.003 sec)
+Rows matched: 2  Changed: 2  Warnings: 0
+
+
+--Part 4 Views
+
+--View 1
+
+CREATE VIEW num_Perpetrator AS 
+SELECT Incident.Incident_ID,
+COUNT(Perpetrator.Perpetrator_ID) AS num_Perpetrator
+FROM Incident
+LEFT JOIN Perpetrator ON Incident.Incident_ID = Perpetrator.Incident_ID
+GROUP BY Incident.Incident_ID;
+
++-------------+-----------------+
+| Incident_ID | num_Perpetrator |
++-------------+-----------------+
+|        1001 |               1 |
+|        1002 |               3 |
+|        1003 |               1 |
+|        1004 |               1 |
+|        1005 |               2 |
++-------------+-----------------+
+5 rows in set (0.001 sec)
+
+
+--View 2
+
+CREATE VIEW Environmental_Crimes AS
+SELECT DISTINCT Incident.Incident_ID,Incident_Name, Incident_Type, Seizure_Date, Country_Name, Species, Perpetrator_ID, Full_Name, Arrested, Conviction
+FROM Incident
+INNER JOIN Incident_Type ON Incident.Incident_Type_ID = Incident_Type.Incident_Type_ID
+INNER JOIN Location ON Incident.Incident_ID = Location.Incident_ID
+INNER JOIN Country ON Location.Country_ID = Country.Country_ID
+INNER JOIN Species_Detail ON Incident.Incident_ID = Species_Detail.Incident_ID
+INNER JOIN Species ON Species_Detail.Species_ID = Species.Species_ID
+LEFT JOIN Perpetrator ON Incident.Incident_ID = Perpetrator.Incident_ID;
+
++-------------+---------------+--------------+--------------+----------+----------------+---------------------------+----------+------------+
+| Incident_ID | Incident_Type | Seizure_Date | Country_Name | Species  | Perpetrator_ID | Full_Name                 | Arrested | Conviction |
++-------------+---------------+--------------+--------------+----------+----------------+---------------------------+----------+------------+
+|        1001 | Seizure       | 2021-04-11   | Namibia      | Pangolin |              1 | Veikko Angula             |        1 |          0 |
+|        1002 | Poaching      | 2021-04-02   | Namibia      | Rhino    |              2 | Messrs. Zondundi Tjipuiko |        1 |          0 |
+|        1002 | Poaching      | 2021-04-02   | Namibia      | Rhino    |              3 | Frederik Hamukoto         |        1 |          0 |
+|        1002 | Poaching      | 2021-04-02   | Namibia      | Rhino    |              4 | Tjimbaka Mbatiminua       |        1 |          0 |
+|        1003 | Seizure       | 2020-01-01   | Congo(the)   | Elephant |              5 | Molouka Kennedy           |        1 |          1 |
+|        1004 | Seizure       | 2021-04-08   | China        | Tiger    |              6 | Yang                      |        1 |          0 |
+|        1005 | Poaching      | 2014-06-17   | India        | Tiger    |              7 | Unknown                   |        1 |          1 |
+|        1005 | Poaching      | 2014-06-17   | India        | Tiger    |              8 | Unknown                   |        1 |          1 |
++-------------+---------------+--------------+--------------+----------+----------------+---------------------------+----------+------------+
+8 rows in set (0.001 sec)
+
+
+--Part 5
+-- Stored Procedure to get a list of Environmental Crimes for a particular species.
+
+CREATE PROCEDURE One_Species_Crime (IN search_species VARCHAR(100))
+BEGIN
+SELECT DISTINCT Incident.Incident_ID, Incident_Type, Seizure_Date, C1.Country_Name, Species, Perpetrator_ID, Full_Name, Arrested, Conviction,
+Trade_Route_ID,Trade_Route_Type,C1.Country_Name AS Trade_Route_Country,Port,Trade_Route.Location,Transit_Method,Comments,Travel_Date
+FROM Incident
+INNER JOIN Incident_Type ON Incident.Incident_Type_ID = Incident_Type.Incident_Type_ID
+INNER JOIN Location ON Incident.Incident_ID = Location.Incident_ID
+INNER JOIN Country C1 ON Location.Country_ID = C1.Country_ID
+LEFT JOIN Species_Detail ON Incident.Incident_ID = Species_Detail.Incident_ID
+LEFT JOIN Species ON Species_Detail.Species_ID = Species.Species_ID
+LEFT JOIN Perpetrator ON Incident.Incident_ID = Perpetrator.Incident_ID
+LEFT JOIN Trade_Route ON Incident.Incident_ID = Trade_Route.Incident_ID
+LEFT JOIN Trade_Route_Type ON Trade_Route.Trade_Route_Type_ID = Trade_Route_Type.Trade_Route_Type_ID
+LEFT JOIN Port ON Trade_Route.Port_ID = Port.Port_ID
+LEFT JOIN Transit_Method ON Trade_Route.Transit_Method_ID = Transit_Method.Transit_Method_ID
+LEFT JOIN Country C2 ON Trade_Route.Country_ID = C2.Country_ID
+AND Species = search_species;
+END//
+
+CALL One_Species_Crime("Tiger")
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+ 

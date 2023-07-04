@@ -1,0 +1,418 @@
+-- ---------------------
+-- Table Creation Script
+-- ---------------------
+
+
+
+-- ---------------------
+-- Create Incident table
+-- ---------------------
+CREATE TABLE Incident
+(
+  Incident_ID	                        INTEGER		NOT NULL,
+  Seizure_Date	                        DATE        NOT NULL,
+  Estimated_Start_Date	                  DATE        NULL,
+  Estimated_End_Date	                  DATE        NULL,
+  Incident_Type_ID	                  SMALLINT    NOT NULL,
+  Incident_Name	                        TEXT        NOT NULL,
+  Incident_Description	                  MEDIUMTEXT  NOT NULL,
+  Transit_Method_ID	                  SMALLINT    NULL,
+  Vehicle_Type_ID	                        SMALLINT    NULL,
+  Carrier	                              VARCHAR(20) NULL,
+  Concealment_Method	                  TEXT        NULL,       
+  Confidential_Comments_ID                SMALLINT    NULL,
+  Confidential_Info_Internal_Comments		TEXT        NULL,
+  Arrests_Made	                        BOOLEAN     NOT NULL,
+  Harvard_Style_Reference	            TEXT        NOT NULL,       
+  Number_of_Arrests	                  INT(6)      NULL,
+  Key_Word	                              VARCHAR(20)     NULL,
+  Forest_Crime_ID	                        SMALLINT    NULL,
+  Agency_Contributor	                  VARCHAR(20) NOT NULL,
+  Last_Updated	                        DATE        NOT NULL,
+  Entered_Date	                        DATE        NOT NULL,
+  Entered_By	                        VARCHAR(20) NOT NULL,
+  Google_Translate 	                  BOOLEAN     NOT NULL
+);
+
+-- ---------------------
+-- Create Location table
+-- ---------------------
+CREATE TABLE Location
+(
+  Incident_ID	                       INTEGER          NOT NULL,
+  Town_City	                             VARCHAR(30)  NOT NULL,
+  Port_ID	                             INT(6)       NULL,
+  Village	                             VARCHAR(30)  NULL,
+  Country_ID	                       VARCHAR(3)   NOT NULL,
+  Latitude	                             FLOAT(5,2)   NULL,
+  Longitude	                             FLOAT(5,2)   NULL,
+  Last_Updated	                       DATE         NOT NULL,
+  Entered_Date	                       DATE         NOT NULL,
+  Entered_By	                       VARCHAR(20)  NOT NULL
+); 
+
+
+-- ---------------------
+-- Create Species_Detail table
+-- ---------------------
+CREATE TABLE Species_Detail
+(
+  Incident_ID	                       INTEGER           NOT NULL,
+  Species_ID	                       SMALLINT      NOT NULL,
+  Species_Item_ID	                       SMALLINT      NOT NULL,
+  Additional_Description	           MEDIUMTEXT    NULL,
+  Quantity	                             MEDIUMINT     NULL,
+  Weight_in_kg	                       FLOAT(5,2)    NULL,
+  Estimated_Weight_in_Kg	           FLOAT(5,2)    NULL,
+  Suspected_Captive_Source             BOOLEAN       NULL,
+  Notes_Unknown_Quantities	           TEXT          NULL,
+  Other_Species_Seized	                 VARCHAR(30)   NULL,
+  Last_Updated	                       DATE          NOT NULL,
+  Entered_Date	                       DATE          NOT NULL,         
+  Entered_By	                       VARCHAR(20)   NOT NULL
+
+);
+
+
+-- ------------------------
+-- Create Trade_Route table
+-- ------------------------
+CREATE TABLE Trade_Route
+(
+  Trade_Route_ID				    	SMALLINT       NOT NULL,
+  Incident_ID	                      INTEGER        NOT NULL,
+  Trade_Route_Type_ID	                SMALLINT       NOT NULL, 
+  Country_ID	                      VARCHAR(3)     NOT NULL,
+  Port_ID	                            INT(6)         NULL,
+  Location	                            VARCHAR(30)    NULL,
+  Transit_Method_ID	                SMALLINT       NULL,
+  Comments	                            MEDIUMTEXT     NULL,
+  Travel_Date	                      DATE           NULL,
+  Last_Updated	                      DATE           NOT NULL,
+  Entered_Date	                      DATE           NOT NULL,
+  Entered_By	                      VARCHAR(20)    NOT NULL
+);
+
+
+-- ------------------------
+-- Create Perpetrator table
+-- ------------------------
+CREATE TABLE Perpetrator
+(
+  Perpetrator_ID	                      SMALLINT        NOT NULL,
+  Incident_ID	                      INTEGER             NOT NULL,
+  Full_Name	                            VARCHAR(30)     NULL,
+  Country_ID	                      VARCHAR(3)      NULL,     
+  Submitted_to_Media_Monitoring_Program BOOLEAN         NULL,
+  Arrested	                            BOOLEAN         NOT NULL,
+  Arrested_Date	                      DATE            NULL,
+  Conviction	                      BOOLEAN         NOT NULL,
+  Convicted_Date	                      DATE            NULL,
+  Convicted_Outcome_Details	          TEXT            NULL,                    
+  Number_of_Years_of_Imprisonment	    FLOAT(5,2)      NULL,
+  Fine_Amount	                      FLOAT(10,2)      NULL,
+  Fine_Currency_ID	                SMALLINT        NULL,                
+  Last_Updated	                      DATE            NOT NULL,  
+  Entered_Date	                      DATE            NOT NULL,
+  Entered_By	                      VARCHAR(30)     NOT NULL
+);
+
+
+-- ------------------------
+-- Create Other_Item_Seized table
+-- ------------------------
+CREATE TABLE Other_Item_Seized
+(
+  Other_Item_Seized_ID	                SMALLINT       NOT NULL,      
+  Incident_ID	                      INTEGER            NOT NULL,
+  Seized_Item_ID	                      SMALLINT       NOT NULL,
+  Quantity	                            INT            NULL,
+  Weight_in_Kg	                      FLOAT(5,2)     NULL,
+  Description	                      TEXT           NULL,          
+  Last_Updated	                      DATE           NOT NULL,
+  Entered_Date	                      DATE           NOT NULL,
+  Entered_By	                      VARCHAR(30)    NOT NULL
+);
+
+
+-- ------------------------
+-- Create Refrigerant_Gas table
+-- ------------------------
+CREATE TABLE Refrigerant_Gas
+(
+  Incident_ID	                      INTEGER          NOT NULL,
+  Gas_Category_ID	                      SMALLINT     NOT NULL,
+  Type_of_Gas_ID	                      SMALLINT     NULL,
+  Cylinder_Type_ID	                SMALLINT     NULL,
+  Number_of_Cylinders	                SMALLINT     NULL,
+  Reported_Volume_in_Kg	                FLOAT(5,2)   NULL,
+  Estimated_Volume_in_Kg	          FLOAT(5,2)   NULL,
+  Additional_Description	          TEXT         NULL,
+  Notes	                            TEXT         NULL,         
+  Last_Updated	                      DATE         NOT NULL,            
+  Entered_Date	                      DATE         NOT NULL,
+  Entered_By	                      VARCHAR(30)  NOT NULL
+);
+
+
+-- ------------------------
+-- Create Attachment table
+-- ------------------------
+CREATE TABLE Attachment
+(
+  Attachment_ID	                     SMALLINT      NOT NULL,
+  Incident_ID	                     INTEGER           NOT NULL, 
+  Attachment	                     BLOB          NOT NULL,                   
+  Source_File_Path	               VARCHAR(100)  NULL,
+  Last_Updated	                     DATE          NOT NULL,
+  Entered_Date	                     DATE          NOT NULL,
+  Entered_By	                     VARCHAR(30)   NOT NULL
+);
+
+
+-- ------------------------
+-- Create Incident_Type table
+-- ------------------------
+CREATE TABLE Incident_Type
+(
+  Incident_Type_ID	              SMALLINT      NOT NULL,
+  Incident_Type	                    VARCHAR(20)   NOT NULL
+);
+
+
+-- ------------------------
+-- Create Country table
+-- ------------------------
+CREATE TABLE Country
+(
+  Country_ID	                    VARCHAR(3)   NOT NULL,
+  Country_Name	                    VARCHAR(30)  NOT NULL
+);
+
+
+-- ---------------------------
+-- Create Transit_Method table
+-- ---------------------------
+CREATE TABLE Transit_Method
+(
+  Transit_Method_ID	             SMALLINT     NOT NULL,
+  Transit_Method	                   VARCHAR(20)  NOT NULL
+);
+
+
+-- -------------------------
+-- Create Vehicle_Type table
+-- -------------------------
+CREATE TABLE Vehicle_Type
+(
+  Vehicle_Type_ID	                   SMALLINT      NOT NULL,
+  Vehicle_Type	                   VARCHAR(20)   NOT NULL
+);
+
+
+-- ----------------------------------
+-- Create Confidential_Comments table
+-- ----------------------------------
+CREATE TABLE Confidential_Comments
+(   
+  Confidential_Comments_ID	       SMALLINT    NOT NULL,
+  Confidential_Comments	             VARCHAR(50) NOT NULL
+);
+
+
+-- -------------------------
+-- Create Forest_Crime table
+-- -------------------------
+CREATE TABLE Forest_Crime
+(
+  Forest_Crime_ID	                    SMALLINT    NOT NULL,
+  Forest_Crime	                    VARCHAR(20) NOT NULL
+);
+
+
+-- --------------------
+-- Create Species table
+-- --------------------
+CREATE TABLE Species
+( 
+  Species_ID	                     SMALLINT     NOT NULL, 
+  Species	                           VARCHAR(100) NOT NULL
+);
+
+
+-- -------------------------
+-- Create Species_Item table
+-- -------------------------
+CREATE TABLE Species_Item
+(
+  Species_Item_ID	                   SMALLINT      NOT NULL,
+  Species_Item	                   VARCHAR(50)   NOT NULL
+);
+
+
+-- -----------------------------
+-- Create Trade_Route_Type table
+-- -----------------------------
+CREATE TABLE Trade_Route_Type     
+(
+  Trade_Route_Type_ID	            SMALLINT     NOT NULL,
+  Trade_Route_Type	            VARCHAR(30)  NOT NULL
+);
+
+
+-- -----------------
+-- Create Port table
+-- -----------------
+CREATE TABLE Port     
+(  
+  Port_ID	                       INT(6)       NOT NULL,
+  Port	                       VARCHAR(100) NOT NULL
+);
+
+
+-- --------------------------
+-- Create Fine_Currency table
+-- --------------------------
+CREATE TABLE Fine_Currency     
+(  
+  Fine_Currency_ID	          SMALLINT     NOT NULL,
+  Fine_Currency	                VARCHAR(3)   NOT NULL
+);
+
+
+-- ------------------------
+-- Create Seized_Item table
+-- ------------------------
+CREATE TABLE Seized_Item      
+(  
+  Seized_Item_ID	               SMALLINT     NOT NULL,
+  Seized_Item	               VARCHAR(30)  NOT NULL
+);
+
+
+-- -------------------------
+-- Create Gas_Category table
+-- -------------------------
+CREATE TABLE Gas_Category      
+(
+  Gas_Category_ID	              SMALLINT     NOT NULL,
+  Gas_Category	              VARCHAR(20)  NOT NULL
+);
+
+
+-- ------------------------
+-- Create Type_of_Gas table
+-- ------------------------
+CREATE TABLE Type_of_Gas      
+(
+  Type_of_Gas_ID	             SMALLINT      NOT NULL,
+  Type_of_Gas	             VARCHAR(30)   NOT NULL
+);
+
+
+-- --------------------------
+-- Create Cylinder_Type table
+-- --------------------------
+CREATE TABLE Cylinder_Type      
+(
+  Cylinder_Type_ID	       SMALLINT      NOT NULL,
+  Cylinder_Type	             VARCHAR(20)   NOT NULL
+);
+
+
+-- -------------------
+-- Define primary keys
+-- -------------------
+ALTER TABLE Incident ADD PRIMARY KEY (Incident_ID);
+ALTER TABLE Location ADD PRIMARY KEY (Incident_ID);
+ALTER TABLE Species_Detail ADD PRIMARY KEY (Incident_ID,Species_ID,Species_Item_ID);
+ALTER TABLE Trade_Route ADD PRIMARY KEY (Trade_Route_ID);
+ALTER TABLE Perpetrator ADD PRIMARY KEY (Perpetrator_ID);
+ALTER TABLE Other_Item_Seized ADD PRIMARY KEY (Other_Item_Seized_ID);
+ALTER TABLE Refrigerant_Gas ADD PRIMARY KEY (Incident_ID, Gas_Category_ID, Type_of_Gas_ID, Cylinder_Type_ID);
+ALTER TABLE Attachment ADD PRIMARY KEY (Attachment_ID);
+ALTER TABLE Incident_Type ADD PRIMARY KEY (Incident_Type_ID);
+ALTER TABLE Country ADD PRIMARY KEY (Country_ID);
+ALTER TABLE Transit_Method ADD PRIMARY KEY (Transit_Method_ID);
+ALTER TABLE Vehicle_Type ADD PRIMARY KEY (Vehicle_Type_ID);
+ALTER TABLE Confidential_Comments ADD PRIMARY KEY (Confidential_Comments_ID);
+ALTER TABLE Forest_Crime ADD PRIMARY KEY (Forest_Crime_ID);
+ALTER TABLE Species ADD PRIMARY KEY (Species_ID);
+ALTER TABLE Species_Item ADD PRIMARY KEY (Species_Item_ID);
+ALTER TABLE Trade_Route_Type ADD PRIMARY KEY (Trade_Route_Type_ID);
+ALTER TABLE Port ADD PRIMARY KEY (Port_ID);
+ALTER TABLE Fine_Currency ADD PRIMARY KEY (Fine_Currency_ID);
+ALTER TABLE Seized_Item ADD PRIMARY KEY (Seized_Item_ID);
+ALTER TABLE Gas_Category ADD PRIMARY KEY (Gas_Category_ID);
+ALTER TABLE Type_of_Gas ADD PRIMARY KEY (Type_of_Gas_ID);
+ALTER TABLE Cylinder_Type ADD PRIMARY KEY (Cylinder_Type_ID);
+
+
+
+
+-- -------------------
+-- Define foreign keys
+-- -------------------
+ALTER TABLE Incident ADD CONSTRAINT FK_Incident_Incident_Type FOREIGN KEY (Incident_Type_ID) REFERENCES Incident_Type (Incident_Type_ID);
+ALTER TABLE Incident ADD CONSTRAINT FK_Incident_Transit_Method FOREIGN KEY (Transit_Method_ID) REFERENCES Transit_Method (Transit_Method_ID);
+ALTER TABLE Incident ADD CONSTRAINT FK_Incident_Vehicle_Type FOREIGN KEY (Vehicle_Type_ID) REFERENCES Vehicle_Type (Vehicle_Type_ID);
+ALTER TABLE Incident ADD CONSTRAINT FK_Incident_Confidential_Comments FOREIGN KEY (Confidential_Comments_ID) REFERENCES Confidential_Comments (Confidential_Comments_ID);
+ALTER TABLE Incident ADD CONSTRAINT FK_Incident_Forest_Crime FOREIGN KEY (Forest_Crime_ID) REFERENCES Forest_Crime (Forest_Crime_ID);
+ALTER TABLE Location ADD CONSTRAINT FK_Location_Port FOREIGN KEY (Port_ID) REFERENCES Port (Port_ID);
+ALTER TABLE Location ADD CONSTRAINT FK_Location_Country FOREIGN KEY (Country_ID) REFERENCES Country (Country_ID);
+ALTER TABLE Species_Detail ADD CONSTRAINT FK_Species_Detail_Incident FOREIGN KEY (Incident_ID) REFERENCES Incident (Incident_ID);
+ALTER TABLE Species_Detail ADD CONSTRAINT FK_Species_Detail_Species FOREIGN KEY (Species_ID) REFERENCES Species (Species_ID);
+ALTER TABLE Species_Detail ADD CONSTRAINT FK_Species_Detail_Species_Item FOREIGN KEY (Species_Item_ID) REFERENCES Species_Item (Species_Item_ID);
+ALTER TABLE Trade_Route ADD CONSTRAINT FK_Trade_Route_Incident FOREIGN KEY (Incident_ID) REFERENCES Incident (Incident_ID);
+ALTER TABLE Trade_Route ADD CONSTRAINT FK_Trade_Route_Trade_Route_Type FOREIGN KEY (Trade_Route_Type_ID) REFERENCES Trade_Route_Type (Trade_Route_Type_ID);
+ALTER TABLE Trade_Route ADD CONSTRAINT FK_Trade_Route_Country FOREIGN KEY (Country_ID) REFERENCES Country (Country_ID);
+ALTER TABLE Trade_Route ADD CONSTRAINT FK_Trade_Route_Port FOREIGN KEY (Port_ID) REFERENCES Port (Port_ID);
+ALTER TABLE Trade_Route ADD CONSTRAINT FK_Trade_Route_Transit_Method FOREIGN KEY (Transit_Method_ID) REFERENCES Transit_Method (Transit_Method_ID);
+ALTER TABLE Perpetrator ADD CONSTRAINT FK_Perpetrator_Incident FOREIGN KEY (Incident_ID) REFERENCES Incident (Incident_ID);
+ALTER TABLE Perpetrator ADD CONSTRAINT FK_Perpetrator_Country FOREIGN KEY (Country_ID) REFERENCES Country (Country_ID);
+ALTER TABLE Perpetrator ADD CONSTRAINT FK_Perpetrator_Fine_Currency FOREIGN KEY (Fine_Currency_ID) REFERENCES Fine_Currency (Fine_Currency_ID);
+ALTER TABLE Other_Item_Seized ADD CONSTRAINT FK_Other_Item_Seized_Incident FOREIGN KEY (Incident_ID) REFERENCES Incident (Incident_ID);  
+ALTER TABLE Other_Item_Seized ADD CONSTRAINT FK_Other_Item_Seized_Seized_Item FOREIGN KEY (Seized_Item_ID) REFERENCES Seized_Item (Seized_Item_ID);
+ALTER TABLE Refrigerant_Gas ADD CONSTRAINT FK_Refrigerant_Gas_Incident FOREIGN KEY (Incident_ID) REFERENCES Incident (Incident_ID);
+ALTER TABLE Refrigerant_Gas ADD CONSTRAINT FK_Refrigerant_Gas_Gas_Category FOREIGN KEY (Gas_Category_ID) REFERENCES Gas_Category (Gas_Category_ID);
+ALTER TABLE Refrigerant_Gas ADD CONSTRAINT FK_Refrigerant_Gas_Type_of_Gas FOREIGN KEY (Type_of_Gas_ID) REFERENCES Type_of_Gas (Type_of_Gas_ID);
+ALTER TABLE Refrigerant_Gas ADD CONSTRAINT FK_Refrigerant_Gas_Cylinder_Type FOREIGN KEY (Cylinder_Type_ID) REFERENCES Cylinder_Type (Cylinder_Type_ID);
+ALTER TABLE Attachment ADD CONSTRAINT FK_Attachment_Incident FOREIGN KEY (Incident_ID) REFERENCES Incident (Incident_ID);
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+     
+
+
+
+
+
+
